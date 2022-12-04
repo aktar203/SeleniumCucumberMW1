@@ -1,0 +1,50 @@
+package edu.visiontestlabs.base;
+
+import org.openqa.selenium.WebDriver;
+
+import edu.visiontestlabs.pageobjects.HomePage;
+import edu.visiontestlabs.pageobjects.LoginPage;
+import edu.visiontestlabs.pageobjects.RegistrationPage;
+
+public class ApplicationController {
+	
+	private WebDriver driver;
+    private HomePage homePage;
+    private LoginPage loginPage;
+    private RegistrationPage registrationPage;
+    
+
+    public ApplicationController(WebDriver driver) {
+        this.driver = driver;
+        homePage = new HomePage(driver);
+        loginPage = new LoginPage(driver);
+        registrationPage = new RegistrationPage(driver);  
+        
+    }
+
+
+    public WebDriver getDriver(){
+        return driver;
+    }
+
+	
+	  public void navigateToApplication(){
+	  driver.navigate().to(ResourceFactory.getInstance().getProperty("APP_URL").toString()); 
+	  
+	  }
+	 
+
+
+    public HomePage homePage() {
+        return homePage;
+    }
+    
+    public LoginPage loginPage() {
+    	return loginPage;
+    }
+
+    public RegistrationPage registrationPage() {
+    	return registrationPage;
+    }
+
+}
